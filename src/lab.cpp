@@ -6,7 +6,7 @@
 // Called from main.cpp -> loop()
 // Select the task you want to execute by editing lab_main()
 void lab_main() {
-    lab1_task1();   // <- Change this to lab1_task2(), etc.
+    lab1_task4();   // <- Change this to lab1_task2(), etc.
 }
 
 // ======================================================
@@ -111,4 +111,8 @@ void lab1_task3() {
 void lab1_task4() {
     // TODO: Implement full maze trajectory
     // Combine calibrated distance and turn sequences
+    tof_update();
+    Serial.printf("L: %u mm  F: %u mm  R: %u\n", tof_get_left(), tof_get_front(), tof_get_right());
+    sleep_ms(200);
+
 }

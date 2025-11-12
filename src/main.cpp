@@ -29,6 +29,11 @@ void show_main_screen() {
            encoder_left_ticks(), encoder_right_ticks());
   oled_text(0, 2, line);
 
+  // === Range Sensor data ===
+  snprintf(line, sizeof(line), "L: %u F: %u R: %u",
+           tof_get_left(), tof_get_front(), tof_get_right());
+  oled_text(0, 3, line);
+
   // === Current PID parameters ===
   float p, i, d;
   motor_get_pid_gains(&p, &i, &d);
@@ -44,11 +49,13 @@ bool oled_update_callback(repeating_timer_t *t) {
 
 void setup() {
   static repeating_timer_t oled_timer;
+  Serial.begin(115200);
   delay(100);
   oled_init();
   encoder_init();
   motor_init();
-  sensors_init();
+  buttons_init();  // Buttons
+  tof_init();   // Range Sensors
 
   splash_screen(); // shows splash screen for 2 secs
   add_repeating_timer_ms(100, oled_update_callback, NULL, &oled_timer);
