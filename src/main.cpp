@@ -55,7 +55,7 @@ void setup() {
   encoder_init();
   motor_init();
   buttons_init();  // Buttons
-  tof_init();   // Range Sensors
+  tof_init();      // Range Sensors
 
   splash_screen(); // shows splash screen for 2 secs
   add_repeating_timer_ms(100, oled_update_callback, NULL, &oled_timer);

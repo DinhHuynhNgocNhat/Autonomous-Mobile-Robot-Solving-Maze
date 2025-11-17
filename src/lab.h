@@ -26,4 +26,7 @@ void lab1_task3(); // Trajectory with PID control and calibration
 void lab1_task4(); // Extended maze trajectory (optional)
 
 // === Lab 2 ===
-// Add new tasks here when available
+void lab2_task1(); // Perception 1 (front sensor + stop)
+void lab2_task2(); // Perception 2 (front sensor + trajectory)
+void lab2_task3(); // Perception 3 (side sensor + wall following straight)
+void lab2_task4(); // Perception 4 (side sensor + wall following maze)
