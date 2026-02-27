@@ -146,10 +146,30 @@ void tof_init() {
 }
 
 // === Update ===
-void tof_update() {
-    dist_left  = vl6180x_read_range(VL6180X_LEFT_ADDRESS);
-    dist_front = vl6180x_read_range(VL6180X_FRONT_ADDRESS);
-    dist_right = vl6180x_read_range(VL6180X_RIGHT_ADDRESS);
+// void tof_update() {
+//     dist_left  = vl6180x_read_range(VL6180X_LEFT_ADDRESS);
+//     dist_front = vl6180x_read_range(VL6180X_FRONT_ADDRESS);
+//     dist_right = vl6180x_read_range(VL6180X_RIGHT_ADDRESS);
+// }
+
+void tof_update(void)
+{
+    uint16_t d;
+    static uint16_t last_left  = 0;
+    static uint16_t last_front = 0;
+    static uint16_t last_right = 0;
+
+    d = vl6180x_read_range(VL6180X_LEFT_ADDRESS);
+    dist_left = (d == last_left) ? 255 : d;
+    last_left = d;
+
+    d = vl6180x_read_range(VL6180X_FRONT_ADDRESS);
+    dist_front = (d == last_front) ? 255 : d;
+    last_front = d;
+
+    d = vl6180x_read_range(VL6180X_RIGHT_ADDRESS);
+    dist_right = (d == last_right) ? 255 : d;
+    last_right = d;
 }
 
 // === Getter ===

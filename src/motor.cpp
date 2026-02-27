@@ -64,9 +64,9 @@ bool pid_callback(repeating_timer_t *t) {
     if (outR < -100) outR = -100;
 
     motor_set_pwm(outL, outR);
-    Serial.printf("%.1f,%.1f,%.1f,%.1f\n",
-       rpm_target_L, rpmL_meas,
-       rpm_target_R, rpmR_meas);
+    // Serial.printf("%.1f,%.1f,%.1f,%.1f\n",
+    //    rpm_target_L, rpmL_meas,
+    //    rpm_target_R, rpmR_meas);
     return true; // repeat
 }
 
